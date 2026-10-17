@@ -369,7 +369,7 @@ const FAQS = [
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="px-4 py-14">
+    <section id="faq" className="px-4 py-14">
       <SectionTitle pre="Perguntas" hl="frequentes" />
       <div className="mx-auto mt-8 max-w-2xl space-y-3">
         {FAQS.map(([q, a], i) => (
@@ -407,8 +407,8 @@ export function Footer() {
       <nav className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 opacity-80">
         <a href="#planos">Planos</a>
         <a href="#faq">Dúvidas</a>
-        <a href="/privacidade">Política de Privacidade</a>
-        <a href="/termos">Termos de Uso</a>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
       </nav>
       <a href="mailto:suporte@manualstock.com" className="mt-4 inline-flex items-center gap-2 opacity-80">
         <Mail className="h-4 w-4" /> suporte@manualstock.com
