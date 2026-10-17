@@ -62,7 +62,7 @@ export function getStoredUTMs(): UTMs {
 
 function getCookie(name: string) {
   const m = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
-  return m ? decodeURIComponent(m[1]) : "";
+  return m?.[1] ? decodeURIComponent(m[1]) : "";
 }
 
 export function isCheckoutUrl(href: string) {

@@ -7,9 +7,9 @@ export function TrackingBootstrap() {
     getAllUTMs();
     const decorate = (root: ParentNode) => {
       root.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((a) => {
-        if (a.dataset.tracked || !isCheckoutUrl(a.href)) return;
+        if (a.dataset["tracked"] || !isCheckoutUrl(a.href)) return;
         a.href = buildCheckoutUrl(a.href);
-        a.dataset.tracked = "1";
+        a.dataset["tracked"] = "1";
       });
     };
     decorate(document);

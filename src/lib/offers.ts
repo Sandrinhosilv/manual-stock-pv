@@ -1,6 +1,6 @@
 export const OFFERS = {
   basico: {
-    url: import.meta.env.VITE_CHECKOUT_BASICO || "https://pay.lowify.com.br/go.php?offer=39faaf35",
+    url: import.meta.env["VITE_CHECKOUT_BASICO"] || "https://pay.lowify.com.br/go.php?offer=39faaf35",
     utm: {
       utm_source: "manual-stock",
       utm_medium: "Pacote-basica",
@@ -9,7 +9,7 @@ export const OFFERS = {
     },
   },
   premium: {
-    url: import.meta.env.VITE_CHECKOUT_PREMIUM || "https://pay.lowify.com.br/go.php?offer=l19yc5f",
+    url: import.meta.env["VITE_CHECKOUT_PREMIUM"] || "https://pay.lowify.com.br/go.php?offer=l19yc5f",
     utm: {
       utm_source: "manual-stock",
       utm_medium: "Pacote-premium",
