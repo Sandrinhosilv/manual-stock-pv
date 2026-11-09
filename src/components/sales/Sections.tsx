@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  ArrowDown, Check, ChevronDown, Crown, Mail, ShieldCheck, Smartphone, Star, X, Zap,
+  ArrowDown, BrainCircuit, Check, ChevronDown, CircleStop, Cog, Crown, Disc3, FileText, Fuel, Mail, MoveVertical, ShieldCheck, Smartphone, Star, X, Zap,
 } from "lucide-react";
 import { CheckoutButton } from "./CheckoutButton";
 
@@ -13,7 +13,7 @@ const fade = {
 };
 
 const WISTIA =
-  "https://fast.wistia.net/embed/iframe/e4nghpbjil?autoPlay=true&muted=false&controlsVisibleOnLoad=false&playbar=false&playButton=false&smallPlayButton=false&volumeControl=false&fullscreenButton=false&settingsControl=false&playsinline=true";
+  "https://fast.wistia.net/embed/iframe/ihxhmo32xu?autoPlay=true&muted=false&controlsVisibleOnLoad=false&playbar=false&playButton=false&smallPlayButton=false&volumeControl=false&fullscreenButton=false&settingsControl=false&playsinline=true";
 
 const img = (name: string) => `/images/${encodeURIComponent(name)}`;
 
@@ -37,38 +37,41 @@ export function TopBar() {
 export function Hero() {
   return (
     <section className="bg-gradient-hero px-4 pb-14 pt-8">
-      <div className="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-2">
-        <div className="text-center md:text-left">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-card px-4 py-1.5 text-xs font-bold shadow-card">
-            <Smartphone className="h-4 w-4 text-primary" /> Manual Stock
-          </div>
-          <h1 className="text-4xl font-black uppercase italic leading-[0.95] tracking-tight md:text-6xl">
-            Tenha acesso a todos os{" "}
+      <div className="mx-auto grid max-w-5xl items-center gap-6 md:grid-cols-2 md:gap-10">
+        <div className="contents md:block">
+          
+          <h1 className="order-1 text-center text-4xl font-black uppercase italic leading-[0.95] tracking-tight md:text-left md:text-6xl">
+            Acesse{" "}
             <span className="mt-1 inline-block -rotate-1 rounded-xl bg-gradient-primary px-3 py-1 text-primary-foreground shadow-glow">
-              manuais técnicos
+              +5000 manuais técnicos
             </span>{" "}
             em qualquer lugar e a qualquer hora
           </h1>
-          <p className="mt-5 text-muted-foreground">
-            Mais de 5.000 manuais de motos, quadriciclos, jet skis e motores de popa direto no seu celular.
-          </p>
 
-          <div className="mt-6 flex items-center justify-between gap-3 rounded-2xl bg-card p-3 pl-5 shadow-card">
-            <div className="text-left">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">A partir de</p>
-              <p className="text-2xl font-black text-primary">R$ 29,90</p>
-            </div>
-            <a href="#planos" className="rounded-full bg-gradient-primary px-5 py-3 text-xs font-black uppercase text-primary-foreground shadow-glow">
-              Ver planos →
-            </a>
-          </div>
+          <a
+            href="#planos"
+            className="mt-6 hidden rounded-full bg-gradient-primary px-8 py-4 text-sm font-black uppercase text-primary-foreground shadow-glow md:inline-flex"
+          >
+            Liberar meu acesso
+          </a>
 
-          <div className="mt-4 flex items-center justify-center gap-3 md:justify-start">
-            <div className="flex -space-x-2">
-              {["JS", "MR", "AL", "PC"].map((i) => (
-                <span key={i} className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-card bg-accent text-[10px] font-bold text-accent-foreground">
-                  {i}
-                </span>
+          <div className="order-4 mt-4 flex items-center justify-center gap-3 md:justify-start">
+            <div className="flex">
+              {[ "a03.webp", "a05.webp", "a07.webp"].map((avatar, i) => (
+                <div
+                  key={avatar}
+                  className={`relative -ml-3 h-10 w-10 shrink-0 overflow-hidden rounded-full ring-2 ring-white first:ml-0 ${i === 3 ? "z-[3]" : i === 2 ? "z-[2]" : "z-[1]"}`}
+                >
+                  <img
+                    src={`/avatares/${avatar}`}
+                    alt={`Foto de cliente ${i + 1}`}
+                    width={40}
+                    height={40}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover object-top"
+                  />
+                </div>
               ))}
             </div>
             <div className="text-left text-xs">
@@ -81,7 +84,7 @@ export function Hero() {
           </div>
         </div>
 
-        <motion.div {...fade} className="mx-auto w-full max-w-[300px]">
+        <motion.div {...fade} className="order-2 mx-auto w-full max-w-[300px] md:order-none">
           <div className="rounded-[2.5rem] bg-ink p-2.5 shadow-glow">
             <div className="relative aspect-[9/16] overflow-hidden rounded-[2rem] bg-ink">
               <iframe
@@ -96,6 +99,13 @@ export function Hero() {
             Role para baixo <ArrowDown className="h-4 w-4 animate-bounce" />
           </a>
         </motion.div>
+
+        <a
+          href="#planos"
+          className="order-3 mx-auto rounded-full bg-gradient-primary px-8 py-4 text-sm font-black uppercase text-primary-foreground shadow-glow md:hidden"
+        >
+          Liberar meu acesso
+        </a>
       </div>
     </section>
   );
@@ -168,20 +178,25 @@ const CATEGORIES = [
 
 export function Categories() {
   return (
-    <section className="bg-secondary/50 px-4 py-14">
+    <section className="overflow-hidden bg-gradient-to-b from-secondary/20 to-background py-16 md:py-24">
       <SectionTitle pre="O que você precisa para" hl="nunca mais" post="rejeitar serviço" />
-      <div className="mx-auto mt-8 grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-3">
-        {CATEGORIES.map((c) => (
+      <div
+        className="mt-8 mb-8 flex w-max gap-4 marquee hover:[animation-play-state:paused]"
+        role="region"
+        aria-label="Categorias de manuais técnicos"
+      >
+        {[...CATEGORIES, ...CATEGORIES].map((category, i) => (
           <motion.div
-            {...fade}
-            key={c.name}
+            key={`${category.name}-${i}`}
+            {...(i < CATEGORIES.length ? fade : {})}
+            aria-hidden={i >= CATEGORIES.length}
             whileHover={{ y: -6 }}
-            className="group overflow-hidden rounded-2xl bg-card shadow-card"
+            className="group w-[280px] shrink-0 overflow-hidden rounded-2xl bg-card shadow-card sm:w-[320px]"
           >
             <div className="aspect-[4/3] overflow-hidden bg-muted">
               <img
-                src={img(c.file)}
-                alt={c.name}
+                src={img(category.file)}
+                alt={i < CATEGORIES.length ? category.name : ""}
                 width={400}
                 height={300}
                 loading="lazy"
@@ -190,14 +205,136 @@ export function Categories() {
               />
             </div>
             <div className="p-4">
-              <p className="font-black">{c.name}</p>
-              <p className="mt-1 text-xs text-muted-foreground">{c.desc}</p>
+              <p className="font-black">{category.name}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{category.desc}</p>
             </div>
           </motion.div>
         ))}
       </div>
-      <div className="mt-8 text-center">
-        <a href="#planos" className="text-sm font-black uppercase text-primary">Quero entrar agora ↓</a>
+      <div className="mt-10 px-4 text-center">
+        <motion.a
+          href="#planos"
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          className="inline-flex items-center justify-center rounded-full bg-gradient-primary px-8 py-4 text-center text-sm font-black uppercase tracking-wide text-primary-foreground shadow-glow"
+        >
+          Quero entrar agora!
+        </motion.a>
+      </div>
+    </section>
+  );
+}
+
+const PRODUCT_CONTENT = [
+  {
+    title: "Manuais de serviço",
+    description: "Procedimentos e especificações para consultar durante o serviço.",
+    Icon: FileText,
+    image: "IMG (1).webp",
+    imageAlt: "Página de um manual técnico de serviço",
+    detail: "GUIA TÉCNICO · PDF",
+  },
+  {
+    title: "Esquemas elétricos",
+    description: "Diagramas para identificar conexões e consultar circuitos elétricos.",
+    Icon: BrainCircuit,
+    image: "IMG (6).webp",
+    imageAlt: "Esquema elétrico de uma motocicleta",
+    detail: "DIAGRAMA · CIRCUITOS",
+  },
+  {
+    title: "Motor",
+    description: "Informações técnicas para manutenção e reparo do motor.",
+    Icon: Cog,
+    image: "IMG (5).webp",
+    imageAlt: "Motor em manutenção",
+    detail: "MOTOR · COMPONENTES",
+  },
+  {
+    title: "Embreagem",
+    description: "Consulte orientações e componentes do sistema de embreagem.",
+    Icon: Disc3,
+    image: "IMG (2).webp",
+    imageAlt: "Componentes de uma embreagem",
+    detail: "TRANSMISSÃO · EMBREAGEM",
+  },
+  {
+    title: "Freios",
+    description: "Referências para manutenção dos componentes do sistema de freios.",
+    Icon: CircleStop,
+    image: "IMG (9).webp",
+    imageAlt: "Componentes do sistema de freios",
+    detail: "SISTEMA · FREIOS",
+  },
+  {
+    title: "Injeção eletrônica",
+    description: "Conteúdo de consulta para diagnóstico do sistema de injeção.",
+    Icon: Fuel,
+    image: "IMG (7).webp",
+    imageAlt: "Sistema de injeção eletrônica em diagnóstico",
+    detail: "INJEÇÃO · DIAGNÓSTICO",
+  },
+  {
+    title: "Lubrificação",
+    description: "Procedimentos e especificações para os componentes da lubrificação.",
+    Icon: MoveVertical,
+    image: "IMG (8).webp",
+    imageAlt: "Componentes do sistema de lubrificação",
+    detail: "LUBRIFICAÇÃO · PROCEDIMENTOS",
+  },
+] as const;
+
+export function ProductContent() {
+  return (
+    <section className="overflow-hidden bg-secondary/50 px-4 py-16 md:py-24">
+      <div className="mx-auto max-w-5xl">
+        <SectionTitle pre="Conteúdo técnico para" hl="cada serviço" />
+        <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground md:text-base">
+          Consulte manuais e sistemas de diferentes áreas da manutenção.
+        </p>
+        <div
+          className="mt-8 flex w-max gap-4 marquee hover:[animation-play-state:paused] motion-reduce:[animation-play-state:paused]"
+          role="region"
+          aria-label="Conteúdo dos manuais técnicos"
+        >
+          {[...PRODUCT_CONTENT, ...PRODUCT_CONTENT].map((content, i) => (
+            <motion.article
+              key={`${content.title}-${i}`}
+              aria-hidden={i >= PRODUCT_CONTENT.length}
+              whileHover={{ y: -6 }}
+              className="relative h-[420px] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-ink shadow-card"
+            >
+              <img
+                src={`/images/conteudo/${content.image}`}
+                alt={i < PRODUCT_CONTENT.length ? content.imageAlt : ""}
+                width={240}
+                height={420}
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-transparent" />
+              <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-card/95 px-3 py-2 text-[10px] font-bold uppercase tracking-wide text-primary shadow-card">
+                <content.Icon aria-hidden="true" className="h-4 w-4" />
+                {content.detail}
+              </span>
+              <div className="absolute inset-x-0 bottom-0 p-5 text-ink-foreground">
+                <h3 className="text-xl font-black">{content.title}</h3>
+                <p className="mt-2 text-sm text-ink-foreground/85">{content.description}</p>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+        <div className="mt-10 text-center">
+          <motion.a
+            href="#planos"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center justify-center rounded-full bg-gradient-primary px-8 py-4 text-center text-sm font-black uppercase tracking-wide text-primary-foreground shadow-glow"
+          >
+            Quero acessar os manuais
+          </motion.a>
+        </div>
       </div>
     </section>
   );
@@ -214,8 +351,20 @@ const BRANDS = [
   ["Royal Enfield", "https://i.ibb.co/60zcrB2x/ROYAL-ENFIELD-1024x494.webp"],
   ["Sundown", "https://i.ibb.co/wrRbG6nf/sundown-motos-vector-logo.webp"],
   ["KTM", "https://i.ibb.co/p6HhMxFs/KTM.webp"],
+  ["ADLY", "https://images.seeklogo.com/logo-png/0/1/adly-4-ruedas-logo-png_seeklogo-3400.png"],
+  ["SHINERAY", "https://www.motoplanete.com/Shineray/Shineray-logo.webp"],
+  ["CAGIVA", "https://th.bing.com/th/id/R.fea868fa1292e6e8febf4bce71f0872d?rik=CjykOfgLggvgtA&riu=http%3a%2f%2fcybermotorcycle.com%2fimages%2fmarques%2fcagiva-logo-1080.jpg&ehk=fXlDHV8GrgGzeR9xCJG7Plh3o8%2bDqBMP5weG2JB9BW8%3d&risl=&pid=ImgRaw&r=0"],
+  ["POLARIS", "https://tse1.mm.bing.net/th/id/OIP.OewCm8tRBYFfpiNhQAK_HAHaFQ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"],
+  ["APRILIA", "https://loghi-famosi.com/wp-content/uploads/2021/08/Logo-della-Aprilia.png"],
+  ["ZONTES", "https://zontesmotos.com.br/images/brands/logo_zontes-v2.png"],
+  ["HIMALAYAN", "https://tse2.mm.bing.net/th/id/OIP.H2yJU3jiAa5rbGmMASsKRgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"],
+  ["AEON", "https://shoplineimg.com/62b91933cf0c8f006091c8ce/684fbedda36906000d30b67a/1200x.webp?source_format=png"],
+  ["KASINSKI", "https://tse3.mm.bing.net/th/id/OIP.2cWIFm8eARG0fEaidkkQZAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"],
+  ["SANYANG", "https://images.seeklogo.com/logo-png/48/1/sanyang-motor-logo-png_seeklogo-487574.png"],
+  ["TRIUMPH", "https://tse4.mm.bing.net/th/id/OIP.cgeqQQMyGmrlNDBCRMj_4QHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"],
   ["Husqvarna", "https://i.ibb.co/3mSkrvXj/HUSQVARNA-1024x675.webp"],
   ["Ducati", "https://i.ibb.co/RGk58vrB/DUCATI-1024x1024.webp"],
+  ["HYOSUNG", "https://tse2.mm.bing.net/th/id/OIP.lENJfEDIjFo8nMWEmF_NuQAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"],
 ];
 
 export function Brands() {

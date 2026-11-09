@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  Brands, Categories, FAQ, Footer, Guarantee, Hero, Included, Pricing, Testimonials, TopBar,
+  Brands, Categories, FAQ, Footer, Guarantee, Hero, Included, Pricing, ProductContent, Testimonials, TopBar,
 } from "@/components/sales/Sections";
 
 const OG = "https://i.ibb.co/VWxFWBQG/Manulstock.png";
@@ -30,6 +30,7 @@ function Index() {
       <Included />
       <Testimonials />
       <Categories />
+      <ProductContent />
       <Brands />
       <Pricing />
       <Guarantee />
